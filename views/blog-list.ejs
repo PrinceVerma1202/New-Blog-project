@@ -1,0 +1,92 @@
+<%- include('./header.ejs')%>
+
+
+    <section class="dashboard-wrap mtb-40">
+        <div class="container">
+            <div class="body-content">
+                <div class="row">
+                    <%- include('./sidebar.ejs') %>
+                    <div class="col-md-9">
+                        <div class="dash-right">
+                            <div class="dash-header">
+                                <div class="dash-title">
+                                    <h1>Blogs</h1>
+                                </div>
+                                <div class="dash-nav">
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal">
+                                        Add Blog
+                                    </button>
+                                </div>
+                            </div>
+                            <table class="table table-bordered table-striped">
+                                <tr>
+                                    <th>#ID</th>
+                                    <th>Image</th>
+                                    <th>Title</th>
+                                    <th>Category</th>
+                                    <th>Posted On</th>
+                                    <th>Action</th>
+                                </tr>
+                                <% d.forEach((item)=>{ %>
+                                    <tr>
+                                        <td><%= item._id %></td>
+                                        <td><img src="<%= item.image.url %>" width="50px" height="50px"></td>
+                                        <td><%= item.title %></td>
+                                        <td><%= item.discripton.slice(0,50) %></td>
+                                        <td>October 22, 2018</td>
+                                        <td>
+                                            <a href="/blogview/<%=item._id %>" class="btn btn-success btn-sm"><i class="fa-sharp fa-solid fa-eye"></i></a>
+                                            <a href="/blogedit/<%=item._id %>" class="btn btn-info btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
+                                            <a href="/blogdelete/<%=item._id %>" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></a>
+                                            <!-- <a href="#" class="btn btn-danger btn-sm">Delete</a> -->
+                                        </td>
+                                    </tr>
+                                <%})%>
+                                
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- blog modal  -->
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/insertblog" method="post" enctype="multipart/form-data">
+                        <div class="md-3">
+                            <label> title</label>
+                            <input type="text" name="title" class="form-control">
+                           
+                        </div>
+                        <div class="md-3">
+                            <label> Discription</label>
+                            <textarea name="discripton" class="form-control"></textarea>
+                        </div>
+                        <div class="md-3">
+                            <label> Upload image</label>
+                            <input type="file" name="image" class="form-control"> 
+                           
+                        </div>
+                        <button type="submit" class="btn btn-success">Submit</button>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <%- include('./footer.ejs')%>

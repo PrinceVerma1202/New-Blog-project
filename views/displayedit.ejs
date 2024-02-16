@@ -1,0 +1,48 @@
+<%- include('./header.ejs')%>
+
+
+    <section class="dashboard-wrap mtb-40">
+        <div class="container">
+            <div class="body-content">
+                <div class="row">
+                    <%- include('./sidebar.ejs') %>
+
+                    <div class="col-md-9">
+                        <div class="dash-right">
+                            <div class="dash-header">
+                                <div class="dash-title">
+                                    <h1>UPDATE BLOG</h1>
+                                </div>
+                                <div class="dash-nav">
+                                    <!-- Button trigger modal -->
+                                   
+                                </div>
+                            </div>
+                           <form action="/blogupdate/<%= edit._id %>" method="post" enctype="multipart/form-data">
+                            <div class="md-3">
+                                <label for=""> Title</label>
+                                <input type="text" class="form-control" name="title" value="<%= edit.title %>">
+                            </div>
+                            <div class="md-3">
+                                <label for=""> Discription</label>
+                                <textarea name="discripton" class="form-control"> <%= edit.discripton %> </textarea>
+                            </div>
+                            <div class="md-3">
+                                <label for=""> image</label>
+                                <input type="file" name="image" class="form-control">
+                            </div>
+                            <img src="<%= edit.image.url %>" width="50px">
+                            <button type="submit" class="btn btn-danger ">UPDATE</button>
+                           </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- blog modal  -->
+
+
+
+    <%- include('./footer.ejs')%>

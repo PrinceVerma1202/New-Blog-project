@@ -1,0 +1,50 @@
+<%- include('../header.ejs')%>
+
+
+    <section class="dashboard-wrap mtb-40">
+        <div class="container">
+            <div class="body-content">
+                <div class="row">
+                    <%- include('../sidebar.ejs') %>
+                    <div class="col-md-9">
+                        <div class="dash-right">
+                            <div class="dash-header">
+                                <div class="dash-title">
+                                    <h1>Contact</h1>
+                                </div>
+                               
+                            </div>
+                            <table class="table table-bordered table-striped">
+                                <tr>
+                                    <th>#ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Message</th>
+                                </tr>
+                                <% d.forEach((ditem)=>{ %>
+                                    <tr>
+                                        <td><%= ditem._id %> </td>
+                                        <td><%= ditem.name %></td>
+                                        <td><%= ditem.email %></td>
+                                        <td><%= ditem.phone %></td>
+                                        <td><%= ditem.message %></td>
+                                        
+                                       
+                                    </tr>
+                                <%})%>
+                               
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- blog modal  -->
+
+
+   
+    <%- include('../footer.ejs')%>
